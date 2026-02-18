@@ -21,20 +21,20 @@ app.use("/movies", moviesRoutes)
 app.use("/auth", authRoutes)
 app.use("/watchlist", watchlistRoutes)
 const port= 5001;
-app.listen(port,()=>{
+ const Server =app.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
 });
 
 process.on("unhandledRejection",(err)=>{
     console.error(`Unhandled Rejection: ${err.message}`, err);
-    Service.close( async() => {
+    Server.close( async() => {
     await disconnectDB();
     process.exit(1);
     });
 });
 process.on("uncaughtException",(err)=>{
     console.error(`Uncaught Exception: ${err.message}`, err);
-    Service.close( async() => {
+    Server.close( async() => {
     await disconnectDB();
     process.exit(1);
     });
