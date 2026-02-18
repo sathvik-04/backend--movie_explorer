@@ -20,7 +20,7 @@ app.use(express.urlencoded({extended:true}));
 app.use("/movies", moviesRoutes)
 app.use("/auth", authRoutes)
 app.use("/watchlist", watchlistRoutes)
-const port= 5001;
+const port= process.env.PORT || 5001;
  const Server =app.listen(port,()=>{
     console.log(`Server is running on port ${port}`);
 });
