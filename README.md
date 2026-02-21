@@ -1,6 +1,6 @@
 # 🎬 Movie Explorer Backend API
 
-A scalable backend API for a Movie Explorer application built with **Node.js, Express, Prisma ORM, and PostgreSQL**, featuring **JWT authentication**, **watchlist management**, and deployed on **Railway Cloud**.
+A scalable backend API for a Movie Explorer application built with **Node.js, Express.js, Prisma ORM, and PostgreSQL**, featuring **JWT authentication**, **user watchlist management**, and deployed on **Railway Cloud**.
 
 ---
 
@@ -15,18 +15,20 @@ Open the link to check if the API is running.
 ## ✨ Features
 
 * 🔐 JWT Authentication (Login & Protected Routes)
-* 🗄 PostgreSQL Database using Prisma ORM
-* ❤️ User Watchlist Feature
+* ❤️ User Watchlist System
 
   * Add movie to watchlist
   * Update watchlist item
   * Delete watchlist item
   * View user watchlist
+* 🎬 Movie API routes
+* 🗄 PostgreSQL Database using Prisma ORM
 * ✅ Request Validation Middleware
-* 🛡 Ownership checks to prevent unauthorized access
-* ☁️ Cloud Deployment on Railway
-* 🧪 API Testing with Postman
+* 🛡 Ownership checks for secure data access
 * ⚡ Clean MVC Architecture
+* ☁️ Railway Cloud Deployment
+* 🧪 API Testing with Postman
+* 📦 Database migrations & seeding with Prisma
 
 ---
 
@@ -56,21 +58,28 @@ src/
  ├── config/
  │    └── DB.js
  ├── controllers/
- │    ├── authController.js
- │    ├── movieController.js
- │    └── watchlistController.js
+ │    ├── authcontroller.js
+ │    └── watchlistcontroller.js
  ├── routes/
  │    ├── authRoutes.js
  │    ├── movieRoutes.js
  │    └── watchlistRoutes.js
  ├── middleware/
  │    ├── authMiddleware.js
+ │    ├── errorMiddleware.js
  │    └── validateRequest.js
+ ├── validators/
+ │    ├── authValidators.js
+ │    ├── movieValidators.js
+ │    └── watchlistValidators.js
+ ├── utils/
+ │    └── generateToken.js
  └── server.js
 
 prisma/
  ├── schema.prisma
- └── migrations/
+ ├── migrations/
+ └── seed.js
 ```
 
 ---
@@ -104,10 +113,16 @@ PORT=5001
 
 ---
 
-### 4️⃣ Run Database Migration
+### 4️⃣ Run Prisma Migration
 
 ```
 npx prisma migrate dev
+```
+
+(Optional seed data)
+
+```
+node prisma/seed.js
 ```
 
 ---
@@ -122,7 +137,7 @@ npm run dev
 
 ## 🔐 Authentication
 
-Login returns a JWT token.
+Login returns JWT token.
 
 Use token in headers:
 
@@ -179,9 +194,9 @@ Backend deployed on **Railway** with environment variables configured and connec
 ## 📌 Future Improvements
 
 * 🔄 Refresh Token Authentication
-* 📊 Movie Recommendation ML Model
 * 📑 Swagger API Documentation
 * ⚡ Rate Limiting & Security Enhancements
+* 🎯 Movie Recommendation ML Model
 * 🎮 Multiplayer features inspired by MMORPG systems
 
 ---
@@ -194,4 +209,4 @@ LinkedIn: https://linkedin.com/in/sathwik-u-shetty
 
 ---
 
-⭐ If you like this project, give it a star!
+⭐ If you like this project, consider giving it a star!
